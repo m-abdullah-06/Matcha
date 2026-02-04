@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Memory Game Banner](https://img.shields.io/badge/Memory-Game-FF6B6B?style=for-the-badge&logo=react&logoColor=white)
+![Matcha](https://img.shields.io/badge/Memory-Game-FF6B6B?style=for-the-badge&logo=react&logoColor=white)
 ![React](https://img.shields.io/badge/React-18.0+-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
