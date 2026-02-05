@@ -4,22 +4,22 @@ import WinMessage from "./components/WinMessage";
 import { useGameLogic } from "./hooks/useGameLogic";
 
 const cardValues = [
-  "🎮",
-  "🎧",
-  "🎸",
-  "🎥",
-  "🚲",
-  "✈️",
-  "🚗",
-  "🚀",
-  "🎮",
-  "🎧",
-  "🎸",
-  "🎥",
-  "🚲",
-  "✈️",
-  "🚗",
-  "🚀",
+  "🐢",
+  "🍵",
+  "🌿",
+  "🍃",
+  "🌱",
+  "🌳",
+  "🐸",
+  "🎋",
+  "🐢",
+  "🍵",
+  "🌿",
+  "🍃",
+  "🌱",
+  "🌳",
+  "🐸",
+  "🎋",
 ];
 
 function App() {
@@ -34,22 +34,25 @@ function App() {
   } = useGameLogic(cardValues);
 
   return (
-    <div className="app">
-      <GameHeader
-        score={score}
-        moves={moves}
-        time={time}
-        onReset={initializeGame}
-      />
+    <>
+      <div className="confetti-container"></div>
+      <div className="app">
+        <GameHeader
+          score={score}
+          moves={moves}
+          time={time}
+          onReset={initializeGame}
+        />
 
-      {isGameWon && <WinMessage moves={moves} time={time} />}
+        {isGameWon && <WinMessage moves={moves} time={time} />}
 
-      <div className="cards-grid">
-        {cards.map((card) => (
-          <Card key={card.id} card={card} onClick={handleCardClick} />
-        ))}
+        <div className="cards-grid">
+          {cards.map((card) => (
+            <Card key={card.id} card={card} onClick={handleCardClick} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

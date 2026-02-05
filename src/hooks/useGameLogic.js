@@ -120,6 +120,23 @@ export const useGameLogic = (cardValues) => {
     }
   };
 
+  function launchConfetti() {
+    const container = document.querySelector(".confetti-container");
+    if (!container) return;
+
+    for (let i = 0; i < 80; i++) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.animationDelay = Math.random() * 2 + "s";
+
+      container.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 3000);
+    }
+  }
+
   // Check if the game is won
   const isGameWon = matchedCards.length === cards.length && cards.length > 0;
 
@@ -127,6 +144,7 @@ export const useGameLogic = (cardValues) => {
   useEffect(() => {
     if (isGameWon) {
       stopTimer();
+      launchConfetti();
     }
   }, [isGameWon]);
 
