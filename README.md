@@ -18,7 +18,7 @@
 ## 📸 Demo
 
 <div align="center">
-  ![Game Screenshot](./src/assets/ss2.png)
+  <img src="./src/assets/ss2.png" alt="Game Screenshot" width="600">
   <p><i>Match all the cards to win!</i></p>
 </div>
 
