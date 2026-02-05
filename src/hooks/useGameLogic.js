@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export const useGameLogic = (cardValues) => {
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [score, setScore] = useState(0);
+  const [time, setTime] = useState(0);
   const [moves, setMoves] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
+  const timerRef = useRef(null);
 
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -15,12 +17,26 @@ export const useGameLogic = (cardValues) => {
     }
   };
 
-  const initializeGame = () => {
-    // Shuffle the cards
+  const startTimer = () => {
+    timerRef.current = setInterval(() => {
+      setTime((prev) => prev + 1);
+    }, 1000);
+  };
 
+  const stopTimer = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
+  const initializeGame = () => {
+    // Stop existing timer
+    stopTimer();
+
+    // Shuffle the cards
     const shuffledCards = [...cardValues];
     shuffleArray(shuffledCards);
-    console.log(shuffledCards);
 
     const finalCards = shuffledCards.map((value, index) => ({
       id: index,
@@ -28,16 +44,23 @@ export const useGameLogic = (cardValues) => {
       isFlipped: false,
       isMatched: false,
     }));
-    console.log(finalCards);
+
     setCards(finalCards);
     setMoves(0);
     setScore(0);
+    setTime(0);
     setFlippedCards([]);
     setMatchedCards([]);
+
+    // Start timer
+    startTimer();
   };
 
   useEffect(() => {
     initializeGame();
+
+    // Cleanup on unmount
+    return () => stopTimer();
   }, []);
 
   const handleCardClick = (card) => {
@@ -98,7 +121,14 @@ export const useGameLogic = (cardValues) => {
   };
 
   // Check if the game is won
-  const isGameWon = matchedCards.length === cards.length;
+  const isGameWon = matchedCards.length === cards.length && cards.length > 0;
+
+  // Stop timer when game is won
+  useEffect(() => {
+    if (isGameWon) {
+      stopTimer();
+    }
+  }, [isGameWon]);
 
   return {
     cards,
@@ -106,6 +136,7 @@ export const useGameLogic = (cardValues) => {
     matchedCards,
     score,
     moves,
+    time,
     isLocked,
     handleCardClick,
     isGameWon,

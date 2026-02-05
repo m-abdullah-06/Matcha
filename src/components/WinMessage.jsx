@@ -1,10 +1,12 @@
 import React from "react";
 
-const WinMessage = ({ moves }) => {
+const WinMessage = ({ moves, time }) => {
   return (
     <div className="win-message">
       <h2>Congrats</h2>
-      <p>You won in {moves} moves</p>
+      <p>
+        You won in {moves} moves in {time} seconds!
+      </p>
     </div>
   );
 };

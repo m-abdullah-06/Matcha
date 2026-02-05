@@ -23,18 +23,30 @@ const cardValues = [
 ];
 
 function App() {
-  const { cards, score, moves, isGameWon, initializeGame, handleCardClick } =
-    useGameLogic(cardValues);
+  const {
+    cards,
+    score,
+    moves,
+    time,
+    isGameWon,
+    initializeGame,
+    handleCardClick,
+  } = useGameLogic(cardValues);
 
   return (
     <div className="app">
-      <GameHeader score={score} moves={moves} onReset={initializeGame} />
+      <GameHeader
+        score={score}
+        moves={moves}
+        time={time}
+        onReset={initializeGame}
+      />
 
-      {isGameWon && <WinMessage moves={moves} />}
+      {isGameWon && <WinMessage moves={moves} time={time} />}
 
       <div className="cards-grid">
         {cards.map((card) => (
-          <Card card={card} onClick={handleCardClick} />
+          <Card key={card.id} card={card} onClick={handleCardClick} />
         ))}
       </div>
     </div>
