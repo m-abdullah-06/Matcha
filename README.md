@@ -20,7 +20,7 @@
 <div align="center">
   <img src="./src/assets/ss1 (1).png" alt="Game Screenshot" width="600">
   <img src="./src/assets/ss2.png" alt="Game Screenshot" width="600">
-  <img src="./src/assets/ss3.png" alt="Game Screenshot" width="600">
+  <img src="./src/assets/ss33.png" alt="Game Screenshot" width="600">
   <p><i>Match all the cards to win!</i></p>
 </div>
 
