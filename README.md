@@ -18,7 +18,7 @@
 ## 📸 Demo
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x400/FF6B6B/FFFFFF?text=Game+Screenshot" alt="Game Screenshot" />
+  <img src="/assets/ss.png" alt="Game Screenshot" />
   <p><i>Match all the cards to win!</i></p>
 </div>
 
