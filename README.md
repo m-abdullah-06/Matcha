@@ -87,7 +87,7 @@ This project is built with:
 ## 📁 Project Structure
 
 ```
-memory-card-game/
+Matcha/
 ├── src/
     ├── hooks/
 │   │   ├── useGameLogic.js   #Main game logic 
